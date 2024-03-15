@@ -29,4 +29,9 @@ function getEnvelope(id) {
   return envelope;
 }
 
-module.exports = { envelopes, createEnvelop, getEnvelope };
+function deleteEnvelope(id) {
+  const newEnvelopes = envelopes.filter((envelope) => id !== envelope.id);
+  return newEnvelopes;
+}
+
+module.exports = { envelopes, createEnvelop, getEnvelope, deleteEnvelope };
