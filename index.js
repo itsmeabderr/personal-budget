@@ -3,7 +3,7 @@ const app = express();
 
 const PORT = process.env.PORT || 3000;
 // import the data and
-const { envelopes, createEnvelop } = require("./data");
+const { envelopes, createEnvelop, getEnvelope } = require("./data");
 
 app.post("/envelopes", (req, res) => {
   const { id, title, budget } = req.query;
@@ -17,6 +17,12 @@ app.post("/envelopes", (req, res) => {
 
 app.get("/", (req, res) => {
   res.send(envelopes);
+});
+
+app.get("/envelopes/:id", (req, res) => {
+  const { id } = req.params;
+  const envelope = getEnvelope(id);
+  res.send(envelope);
 });
 
 app.listen(PORT, () => {
