@@ -10,6 +10,8 @@ const {
   deleteEnvelope,
 } = require("./data");
 
+app.set("view engine", "ejs");
+
 app.post("/envelopes", (req, res) => {
   const { id, title, budget } = req.query;
   if (!id || !title || !budget) {
@@ -21,7 +23,7 @@ app.post("/envelopes", (req, res) => {
 });
 
 app.get("/", (req, res) => {
-  res.send(envelopes);
+  res.render("index", { envelopes });
 });
 
 app.get("/envelopes/:id", (req, res) => {
