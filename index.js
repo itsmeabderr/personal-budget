@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const path = require("path");
 
 const PORT = process.env.PORT || 3000;
 // import the data and
@@ -10,6 +11,7 @@ const {
   deleteEnvelope,
 } = require("./data");
 
+app.use(express.static(path.join(__dirname, "public")));
 app.set("view engine", "ejs");
 
 app.post("/envelopes", (req, res) => {
