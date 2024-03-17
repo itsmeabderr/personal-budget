@@ -11,9 +11,6 @@ const {
   deleteEnvelope,
 } = require("./data");
 
-app.use(express.static(path.join(__dirname, "public")));
-app.set("view engine", "ejs");
-
 app.post("/envelopes", (req, res) => {
   const { id, title, budget } = req.query;
   if (!id || !title || !budget) {
